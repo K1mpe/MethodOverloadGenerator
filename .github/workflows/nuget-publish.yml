@@ -11,6 +11,8 @@ env:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,7 +26,7 @@ jobs:
         id: version
         run: |
           TAG="${{ github.event.release.tag_name }}"
-          echo "version=${TAG#v}" >> "$GITHUB_OUTPUT"
+          echo "version=${TAG#[vV]}" >> "$GITHUB_OUTPUT"
 
       - name: Restore
         run: dotnet restore ${{ env.PROJECT_PATH }}
@@ -41,9 +43,15 @@ jobs:
           -p:PackageVersion=${{ steps.version.outputs.version }}
           --output ${{ env.PACKAGE_OUTPUT_DIR }}
 
+      - name: NuGet login (OIDC -> temp API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: DekimpeJonas
+
       - name: Push to NuGet.org
         run: >
           dotnet nuget push "${{ env.PACKAGE_OUTPUT_DIR }}/*.nupkg"
-          --api-key ${{ secrets.NUGET_API_KEY }}
+          --api-key ${{ steps.login.outputs.NUGET_API_KEY }}
           --source https://api.nuget.org/v3/index.json
           --skip-duplicate
