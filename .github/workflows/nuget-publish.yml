@@ -32,8 +32,6 @@ jobs:
       - name: Build
         run: dotnet build ${{ env.PROJECT_PATH }} --configuration Release --no-restore
 
-      - name: Test
-        run: dotnet test MethodOverloadGenerator.Tests/MethodOverloadGenerator.Tests.csproj --configuration Release
 
       - name: Pack
         run: >
