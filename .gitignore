@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.claude
+/.vs
+/MethodOverloadGenerator/.vs/MethodOverloadGenerator.slnx
+/MethodOverloadGenerator/bin/Debug
+/MethodOverloadGenerator/obj
+/MethodOverloadGenerator.ManualTest/bin/Debug/net10.0
+/MethodOverloadGenerator.ManualTest/obj
+/MethodOverloadGenerator.Tests/bin/Debug/net10.0
+/MethodOverloadGenerator.Tests/obj

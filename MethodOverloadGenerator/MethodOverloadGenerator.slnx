@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="../MethodOverloadGenerator.ManualTest/MethodOverloadGenerator.ManualTest.csproj" Id="531b552d-3de3-4825-985c-da9985a00c57" />
+  <Project Path="../MethodOverloadGenerator.Tests/MethodOverloadGenerator.Tests.csproj" Id="51226949-9ea9-4da6-b76c-11a4e4535a18" />
+  <Project Path="MethodOverloadGenerator.csproj" />
+</Solution>
