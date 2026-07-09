@@ -24,7 +24,7 @@ jobs:
         id: version
         run: |
           TAG="${{ github.event.release.tag_name }}"
-          echo "version=${TAG#v}" >> "$GITHUB_OUTPUT"
+          echo "version=${TAG#[vV]}" >> "$GITHUB_OUTPUT"
 
       - name: Restore
         run: dotnet restore ${{ env.PROJECT_PATH }}
